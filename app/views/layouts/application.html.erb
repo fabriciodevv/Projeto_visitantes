@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+  
+<html>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <head>
+
+    <title>SistemaControleVisitas</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation" style="z-index: 1000;">
+  <div class="container">
+   <% if user_signed_in? %>
+  <a class="navbar-brand" href="#">Bem-vindo <%= current_user.email %> </a>
+<% end %>
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+      &#9776;
+    </button>
+    <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+      <ul class="nav navbar-nav">
+        <li class="nav-item"><%= link_to "Gerenciar visitantes", visitantes_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Gerenciar Funcionarios", funcionarios_path, class: "nav-link" %></li>
+      </ul>
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= form_tag destroy_user_session_path, method: :delete, class: "nav-link" do %>
+          <% if user_signed_in? %>
+            <%= submit_tag "Sair", class: "btn btn-danger" %>
+            <%end%>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+  </head>
+  <body>
+  <div class="container mt-5" style="padding-top: 15px;">
+    <%= yield %>
+  </body>
+</html>

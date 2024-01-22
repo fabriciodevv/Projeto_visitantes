@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @visitante %>
+<!-- app/views/visitantes/show.html.erb -->
+<h1><%= @visitante.nome %></h1>
+
+<% if @visitante.foto.present? && @visitante.foto.file.present? %>
+  <%= image_tag @visitante.foto.url %>
+<% else %>
+  <p>Nenhuma foto disponível.</p>
+<% end %>
+
+<div>
+  <%= link_to "Editar visitante", edit_visitante_path(@visitante) %> |
+  <%= link_to "Voltar", visitantes_path %>
+
+  <%= button_to "Apagar visitante", @visitante, method: :delete %>
+</div>

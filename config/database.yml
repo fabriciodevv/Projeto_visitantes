@@ -1,0 +1,7 @@
+development:
+  adapter: mysql2
+  database: Sistema_controle_visita
+  username: root
+  password: password90123
+  host: localhost
+  port: 3306 # ou a porta que você está utilizando
